@@ -59,6 +59,7 @@ plot(spdf)
 ### Fortificar os dados para ser capaz de mostrar ele com ggplot2 
 ### (necessita de formato data frame)
 
+library(broom)
 library(sf)
 
 spdf_fortified <- sf::st_as_sf(spdf, region = "google_name")
@@ -67,11 +68,12 @@ str(spdf_fortified)
 
 data_sf = spdf_fortified %>%
   mutate(geom = gsub(geometry,pattern = "(\\))|(\\()|c",replacement = "")) %>%
-  tidyr::separate(geom,into = c("lat","lon"),sep = ",") %>%
-  st_as_sf(.,coords = c("lat","lon"),crs = 4326) 
+  tidyr::separate(geom,into = c("lat","lon"),sep = ",") 
 view(data_sf)
 
 data_sf$lat <- gsub('list',' ',data_sf$lat)
+
+ggplot2::fortify(spdf_fortified)
 
 ### Calcular o centróide de cada hexagono para adicionar o rótulo
 
