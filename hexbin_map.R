@@ -52,12 +52,23 @@ plot(spdf)
 # Mapa ggplot2 com nome dos estados --------------------------------------------------------------------------------------------------------
 
 ### É totalmente possível usar o plot geoespacial usando ggplot2 com a função
-### geom_polygon(), mas primeiro necessitamos fortificá-lo usando o pacote broom.
+### geom_polygon(), mas primeiro necessitamos fortificá-lo usando o pacote sf.
 ### Além disso, o pacote rgeos é usado para calcular o centróide de cada região
 ### com a função gCentroid.
+
+### Fortificar os dados para ser capaz de mostrar ele com ggplot2 
+### (necessita de formato data frame)
 
 library(sf)
 
 spdf@data = spdf@data %>% mutate(google_name = gsub(" \\(United States\\)", "", google_name))
 spdf_fortified <- sf::st_as_sf(spdf, region = "google_name")
 view(spdf_fortified)
+
+### Calcular o centróide de cada hexagono para adicionar o rótulo
+
+library(rgeos)
+
+centers <- cbind.data.frame(data.frame(gCentroid(spdf, byid = TRUE), 
+                                       id = spdf@data$iso3166_2))
+view(centers)
