@@ -18,6 +18,29 @@
 
 # Mapa Hexbin: um exemplo com estados dos US -----------------------------------------------------------------------------------------------
 
+### Esse poste drescreve como construir um mapa hexbin.Ele é baseado em um arquivo geojson
+### que promove os limites dos estados dos Estados Unidos como hexagonos.
 
+# Basic hexbin map -------------------------------------------------------------------------------------------------------------------------
 
+### Você deve fazer o download do arquivo em formato geojson e carregar ele no R com a
+### função geojson_read().
 
+### Carregar pacotes:
+
+library(tidyverse)
+library(geojsonio)
+library(RColorBrewer)
+library(rgdal)
+
+### Download the Hexagones boundaries at geojson format here: 
+### https://team.carto.com/u/andrew/tables/andrew.us_states_hexgrid/public/map.
+
+spdf <- geojson_read("us_states_hexgrid.geojson",  what = "sp")
+view(spdf)
+
+### Reformatação
+
+spdf@data = spdf@data %>%
+  mutate(google_name = gsub(" \\(United States\\)", "", google_name))
+view(spdf@data)
