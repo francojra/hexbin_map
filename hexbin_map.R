@@ -11,4 +11,13 @@
 ### Ou ele pode se referir a um gráfico de densidade bidimensional (2D). Esta seção 
 ### da galeria fornece vários exemplos com explicações passo a passo.
 
+# Mapa hexbin de um objeto geoespacial -----------------------------------------------------------------------------------------------------
+
+### Nesse caso, a técnica é muito próxima do mapa choropleth. Na verdade, é exatamente
+### o mesmo, exceto que a entrada geoJson são contornos hexagonais ao invés de regionais.
+
+# Mapa Hexbin: um exemplo com estados dos US -----------------------------------------------------------------------------------------------
+
+
+
 
