@@ -60,6 +60,7 @@ plot(spdf)
 ### (necessita de formato data frame)
 
 library(broom)
+library(pryr)
 
 class(spdf)
 
