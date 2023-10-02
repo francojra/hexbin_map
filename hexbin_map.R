@@ -61,9 +61,17 @@ plot(spdf)
 
 library(sf)
 
-spdf@data = spdf@data %>% mutate(google_name = gsub(" \\(United States\\)", "", google_name))
 spdf_fortified <- sf::st_as_sf(spdf, region = "google_name")
 view(spdf_fortified)
+str(spdf_fortified)
+
+data_sf = spdf_fortified %>%
+  mutate(geom = gsub(geometry,pattern = "(\\))|(\\()|c",replacement = "")) %>%
+  tidyr::separate(geom,into = c("lat","lon"),sep = ",") %>%
+  st_as_sf(.,coords = c("lat","lon"),crs = 4326) %>%
+view(data_sf)
+
+data_sf <- gsub('list',' ',data_sf$lat)
 
 ### Calcular o centróide de cada hexagono para adicionar o rótulo
 
@@ -72,3 +80,12 @@ library(rgeos)
 centers <- cbind.data.frame(data.frame(gCentroid(spdf, byid = TRUE), 
                                        id = spdf@data$iso3166_2))
 view(centers)
+
+### Gráfico
+
+ggplot() +
+  geom_polygon(data = data_sf, aes(x = lon, y = lat), 
+               fill = "skyblue", color = "white") +
+  geom_text(data = centers, aes(x = x, y = y, label = id)) +
+  theme_void() +
+  coord_map()
