@@ -68,10 +68,10 @@ str(spdf_fortified)
 data_sf = spdf_fortified %>%
   mutate(geom = gsub(geometry,pattern = "(\\))|(\\()|c",replacement = "")) %>%
   tidyr::separate(geom,into = c("lat","lon"),sep = ",") %>%
-  st_as_sf(.,coords = c("lat","lon"),crs = 4326) %>%
+  st_as_sf(.,coords = c("lat","lon"),crs = 4326) 
 view(data_sf)
 
-data_sf <- gsub('list',' ',data_sf$lat)
+data_sf$lat <- gsub('list',' ',data_sf$lat)
 
 ### Calcular o centróide de cada hexagono para adicionar o rótulo
 
