@@ -89,7 +89,7 @@ ggplot() +
 # Básico choropleth ------------------------------------------------------------------------------------------------------------------------
 
 ### Agora, você provavelmente quer ajustar a cor de cada hexagono, de acordo
-### com o valor de uma específica variável (nós chamamos de choropleth map).
+### com o valor de uma específica variável (nós chamamos de mapa coroplético).
 
 
 
