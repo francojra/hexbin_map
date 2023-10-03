@@ -91,6 +91,18 @@ ggplot() +
 ### Agora, você provavelmente quer ajustar a cor de cada hexagono, de acordo
 ### com o valor de uma específica variável (nós chamamos de mapa coroplético).
 
+### Nesta postagem, eu sugiro representar o número de casamentos a cada mil
+### pessoas. Vamos começar carregando essa informação e representando a 
+### distribuição dela:
+
+### Carregando os dados
+
+data <- read.table("https://raw.githubusercontent.com/holtzy/R-graph-gallery/master/DATA/State_mariage_rate.csv", 
+                   header = T, 
+                   sep = ",", 
+                   na.strings = "---")
+view(data)
+
 
 
 
