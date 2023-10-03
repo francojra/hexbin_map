@@ -85,3 +85,19 @@ ggplot() +
   geom_text(data = centers, aes(x = x, y = y, label = id)) +
   theme_void() +
   coord_map()
+
+# Básico choropleth ------------------------------------------------------------------------------------------------------------------------
+
+### Agora, você provavelmente quer ajustar a cor de cada hexagono, de acordo
+### com o valor de uma específica variável (nós chamamos de choropleth map).
+
+
+
+
+
+
+
+
+
+
+
