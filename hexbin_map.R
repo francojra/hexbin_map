@@ -122,10 +122,27 @@ data %>%
 
 ### Unir informações geoespaciais e numéricas
 
+data <- data %>%
+  mutate(id = 1:51) %>%
+  view()
+
+data$id <- as.integer(data$id)
+spdf_fortified$id <- as.integer(spdf_fortified$id)
+str(data)
+str(spdf_fortified)
+
 spdf_fortified <- spdf_fortified %>%
-  left_join(. , data, by = c("id" = "state")) 
+  left_join(. , data, by = "id") 
 view(spdf_fortified)
 
+### Criar o mapa
+
+ggplot() +
+  geom_polygon(data = spdf_fortified, 
+               aes(fill = y_2015, x = long, y = lat, group = group)) +
+  scale_fill_gradient(trans = "log") +
+  theme_void() +
+  coord_map()
 
 
 
