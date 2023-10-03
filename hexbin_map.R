@@ -113,6 +113,10 @@ data %>%
 ### A maioria dos estados apresentam entre 5 e 10 casamentos a cada 1000
 ### habitantes, mas existem dois outliers com altos valores (16 e 32).
 
+### Vamos representar essas informações no mapa. Nós temos uma coluna com
+### a identidade dos estados em geoespacial e numéricos conjuntos de dados.
+### Então, nós podemos unir ambas as informações e plotar elas no mapa.
+
 
 
 
