@@ -110,7 +110,8 @@ data %>%
     geom_histogram(bins = 20, fill = '#69b3a2', color = 'white') + 
     scale_x_continuous(breaks = seq(1,30))
 
-
+### A maioria dos estados apresentam entre 5 e 10 casamentos a cada 1000
+### habitantes, mas existem dois outliers com altos valores (16 e 32).
 
 
 
