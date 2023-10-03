@@ -168,22 +168,31 @@ my_palette <- rev(magma(8))[c(-1,-8)]
 ### Gerar mapa
 
 ggplot() +
-  geom_polygon(data = spdf_fortified, aes(fill = bin, x = long, y = lat, group = group) , size=0, alpha=0.9) +
-  geom_text(data=centers, aes(x=x, y=y, label=id), color="white", size=3, alpha=0.6) +
+  geom_polygon(data = spdf_fortified, 
+               aes(fill = bin, x = long, y = lat, 
+                   group = group) , 
+                   size = 0, alpha = 0.9) +
+  geom_text(data = centers, aes(x = x, y = y, label = id), 
+            color = "white", 
+            size = 3, alpha = 0.6) +
   theme_void() +
   scale_fill_manual( 
-    values=my_palette, 
-    name="Wedding per 1000 people in 2015", 
-    guide = guide_legend( keyheight = unit(3, units = "mm"), keywidth=unit(12, units = "mm"), label.position = "bottom", title.position = 'top', nrow=1) 
+    values = my_palette, 
+    name = "Wedding per 1000 people in 2015", 
+    guide = guide_legend(keyheight = unit(3, units = "mm"), 
+                          keywidth = unit(12, units = "mm"), 
+                          label.position = "bottom", 
+                          title.position = 'top', nrow = 1) 
   ) +
-  ggtitle( "A map of marriage rates, state by state" ) +
+  ggtitle("A map of marriage rates, state by state") +
   theme(
     legend.position = c(0.5, 0.9),
     text = element_text(color = "#22211d"),
     plot.background = element_rect(fill = "#f5f5f2", color = NA), 
     panel.background = element_rect(fill = "#f5f5f2", color = NA), 
     legend.background = element_rect(fill = "#f5f5f2", color = NA),
-    plot.title = element_text(size= 22, hjust=0.5, color = "#4e4d47", margin = margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
+    plot.title = element_text(size = 22, hjust = 0.5, color = "#4e4d47",
+    margin = margin(b = -0.1, t = 0.4, l = 2, unit = "cm")),
   )
 
 
