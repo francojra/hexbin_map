@@ -117,6 +117,14 @@ data %>%
 ### a identidade dos estados em geoespacial e numéricos conjuntos de dados.
 ### Então, nós podemos unir ambas as informações e plotar elas no mapa.
 
+### Note que fizemos uso do trans = "log" na escala de cores para diminuir
+### o efeito dos dois outliers.
+
+### Unir informações geoespaciais e numéricas
+
+spdf_fortified <- spdf_fortified %>%
+  left_join(. , data, by = c("id" = "state")) 
+view(spdf_fortified)
 
 
 
