@@ -103,6 +103,12 @@ data <- read.table("https://raw.githubusercontent.com/holtzy/R-graph-gallery/mas
                    na.strings = "---")
 view(data)
 
+### Distribuição da taxa de casamentos
+
+data %>% 
+  ggplot( aes(x = y_2015)) + 
+    geom_histogram(bins = 20, fill = '#69b3a2', color = 'white') + 
+    scale_x_continuous(breaks = seq(1,30))
 
 
 
