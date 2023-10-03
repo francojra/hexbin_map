@@ -10,3 +10,4 @@
 2. Mapa hexbin de um objeto geoespacial;
 3. Basic hexbin map;
 4. Mapa ggplot2 com nome dos estados;
+5. Básico choropleth;
