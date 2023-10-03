@@ -11,3 +11,4 @@
 3. Basic hexbin map;
 4. Mapa ggplot2 com nome dos estados;
 5. Básico choropleth;
+6. Mapa choropleth hexbin customizado.
